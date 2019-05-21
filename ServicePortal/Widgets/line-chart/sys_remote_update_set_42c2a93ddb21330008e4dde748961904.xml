@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2019-05-21 22:02:27">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description>Line Chart - Angular Chart</description>
+<inserted/>
+<name>Line Chart</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>b3c915b5db21330008e4dde748961949</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2019-05-21 22:02:27</sys_created_on>
+<sys_id>42c2a93ddb21330008e4dde748961904</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2019-05-21 22:02:27</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sp_widget_d90a95b5db21330008e4dde7489619a9</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function($scope) {
+	/* widget controller */
+	var c = this;
+	var arr = [];
+	var arr2 = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'];
+	var dsset = {};
+	arr = ['1', '2', '3', '4', '5'];
+	//randomScalingFactor();
+	var config = {
+		type: 'line',
+		data: {
+			//labels: ["2015-01", "2015-02", "2015-03", "2015-04", "2015-05", "2015-06", "2015-07", "2015-08", "2015-09", "2015-10", "2015-11", "2015-12"],
+			labels: ["Jan-19", "Feb-19", "March-19", "April-19", "May-19", "June-19", "July-19", "Aug-19", "Sep-19", "Oct-19", "Nov-19", "Dec-19" ],
+			datasets: [
+				{
+					label: 'Group-1',
+
+					data: arr2,
+					backgroundColor: 'transparent',
+					borderColor: [
+						'rgba(255,99,132,1)'
+					],
+					borderWidth: 1
+				}
+			]
+		},
+		options: {
+			legend: {
+				display: true,
+				labels: {
+					fontColor: 'rgb(0, 0, 0)'
+					
+				}
+			},
+			responsive: false,
+			scales: {
+				xAxes: [{
+					ticks: {
+						maxRotation: 90,
+						minRotation: 80
+					}
+				}],
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			}
+		}
+	};
+	var ctx = document.getElementById("myChart");
+	var myChart = new Chart(ctx, config);
+
+
+
+
+
+
+
+
+
+
+
+	function randomScalingFactor() {
+		//alert("randomScalingFactor Ran");
+		arr2 = [];
+		var a =	Math.random();
+		//alert("random no is before : "+a*10);
+		for (var i = 0; i&lt;12; i++){
+			a = "1"+(a*100);
+			arr2.push(a);
+			//alert("random no is after : "+a);
+			a=Math.random();
+		}
+		//return a;
+
+	}
+
+	function random_rgba() {
+		var o = Math.round, r = Math.random, s = 255;
+		return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+	}
+
+	$scope.dData = function() {
+		//alert("add data before ran");
+		//var canvas = document.getElementById('myChart');
+		//   var context = canvas.getContext('2d');
+		//context.clearRect(0, 0, canvas.width, canvas.height);
+		//arr = ['6', '2', '3', '4', '5'];
+		//myChart.destroy();
+		//var arr2 = ['1', '20', '30', '40', '50'];
+		for(var i =0; i&lt;myChart.data.datasets.length; i++) {
+			randomScalingFactor();
+			myChart.data.datasets[i].data = arr2;
+
+		}
+
+		//randomScalingFactor();
+
+		//myChart.data.datasets[0].data = arr2;
+		//randomScalingFactor();
+		//arr3 = arr2;
+		//myChart.data.datasets[1].data = arr3;
+		//randomScalingFactor();
+		//arr4 = arr2;
+		//myChart.data.datasets[2].data = arr4;
+
+		//new Chart(ctx, config);
+		myChart.update(config)
+		//return Math.round(Math.random() * 90) + 10
+	};
+	$scope.addGroup = function() {
+		//get index of data set
+		//var index=myChart.data.datasets.length;
+		//alert(myChart.data.datasets.length);
+		dsset.label = 'Group-'+(myChart.data.datasets.length+1);
+		dsset.borderWidth = '1';
+		dsset.backgroundColor = 'transparent';
+		randomScalingFactor();
+		dsset.data = arr2;
+		dsset.borderColor = [random_rgba()];
+
+		//alert(dsset.stringify());
+		myChart.data.datasets.push(dsset);
+		myChart.update(config);
+		dsset = {};
+		//alert (myChart.data.datasets.length);
+		//push into the dataset array
+		//myChart.data.datasets[0]
+
+	};
+
+
+
+
+
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css/&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;true&lt;/has_preview&gt;&lt;id&gt;line-chart-cjs&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]&gt;&lt;/link&gt;&lt;name&gt;Line Chart&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2019-05-21 21:24:39&lt;/sys_created_on&gt;&lt;sys_id&gt;d90a95b5db21330008e4dde7489619a9&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Line Chart&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_d90a95b5db21330008e4dde7489619a9&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2019-05-21 21:36:44&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Title of the document&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;center&gt;Overall Utilization Trend&lt;/center&gt;
+    &lt;div&gt;
+      &lt;!-- your widget template --&gt;
+
+      &lt;canvas id="myChart" width="1000" height="400"&gt;&lt;/canvas&gt;
+    &lt;/div&gt;
+    &lt;button id="rds" ng-click="dData()"&gt;Data Change&lt;/button&gt;
+    &lt;button id="rds" ng-click="addGroup()"&gt;Add Group&lt;/button&gt;
+    &lt;div&gt;
+      
+    &lt;/div&gt;
+  &lt;/body&gt;
+
+&lt;/html&gt;
+]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1140711169</payload_hash>
+<remote_update_set display_value="Line Chart">42c2a93ddb21330008e4dde748961904</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2019-05-21 22:02:27</sys_created_on>
+<sys_id>0ac2a93ddb21330008e4dde748961904</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>16adc5340e40000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2019-05-21 22:02:27</sys_updated_on>
+<table/>
+<target_name>Line Chart</target_name>
+<type>Widget</type>
+<update_domain>global</update_domain>
+<update_guid>2dec517971213300af3190c2eec549c6</update_guid>
+<update_guid_history>2dec517971213300af3190c2eec549c6:1140711169,80ea9db5c8213300f9ff76084c33ac23:-1073711632,142ad5b5a92133000768010faee0a6a4:986812727</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>m2m_sp_widget_dependency_03dc1979db21330008e4dde7489619dd</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency"><m2m_sp_widget_dependency action="INSERT_OR_UPDATE"><sp_dependency display_value="Angular Chart">ac3c9d39db21330008e4dde74896193e</sp_dependency><sp_widget display_value="Line Chart">d90a95b5db21330008e4dde7489619a9</sp_widget><sys_class_name>m2m_sp_widget_dependency</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2019-05-21 21:36:34</sys_created_on><sys_id>03dc1979db21330008e4dde7489619dd</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Angular Chart.Line Chart</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>m2m_sp_widget_dependency_03dc1979db21330008e4dde7489619dd</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2019-05-21 21:36:34</sys_updated_on></m2m_sp_widget_dependency></record_update>]]></payload>
+<payload_hash>1030038061</payload_hash>
+<remote_update_set display_value="Line Chart">42c2a93ddb21330008e4dde748961904</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2019-05-21 22:02:27</sys_created_on>
+<sys_id>46c2a93ddb21330008e4dde748961904</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>16adc5318b20000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2019-05-21 22:02:27</sys_updated_on>
+<table/>
+<target_name>Angular Chart.Line Chart</target_name>
+<type>Widget Dependency</type>
+<update_domain>global</update_domain>
+<update_guid>4bdc197968213300bec602f690f95ede</update_guid>
+<update_guid_history>4bdc197968213300bec602f690f95ede:1030038061</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>
